@@ -20,12 +20,8 @@ buildscript {
     }
 }
 plugins {
-    // this is necessary to avoid the plugins to be loaded multiple times
-    // in each subproject's classloader
     id(libs.plugins.android.application.get().pluginId) apply false
-//    alias(libs.plugins.android.application) apply false
     id(libs.plugins.android.library.get().pluginId) apply false
-//    alias(libs.plugins.android.library) apply false
     id(libs.plugins.kotlin.multiplatform.get().pluginId) apply false
 
 
@@ -65,7 +61,7 @@ allprojects {
         }
         val jvmTarget = map["jvmTarget"] ?: "11"
         val mavenAuthor = username
-        val mavenGroup = "com.$mavenAuthor.${voyagerRoot.name}.example"
+        val mavenGroup = "com.$mavenAuthor.${voyagerRoot.name}.example-local"
         val currentName = project.name.replace("${voyagerRoot.name}-", "")
 
         apply(plugin = "org.jetbrains.dokka")
@@ -120,16 +116,22 @@ allprojects {
                     from(tasks.dokkaHtml.flatMap(org.jetbrains.dokka.gradle.DokkaTask::outputDirectory))
                     archiveClassifier = "javadoc"
                 }
+
+                file("${layout.buildDirectory.get().asFile.absolutePath}/local-repository").mkdirs()
                 publishing {
                     val projectName = voyagerRoot.name
                     repositories {
+//                        maven {
+//                            name = "GitHubPackages"
+//                            url = uri("https://maven.pkg.github.com/$mavenAuthor/${projectName}")
+//                            credentials {
+//                                username = "$mavenAuthor"
+//                                password = myExtra["githubToken"]?.toString()
+//                            }
+//                        }
                         maven {
-                            name = "GitHubPackages"
-                            url = uri("https://maven.pkg.github.com/$mavenAuthor/${projectName}")
-                            credentials {
-                                username = "$mavenAuthor"
-                                password = myExtra["githubToken"]?.toString()
-                            }
+                            name = "CustomLocal"
+                            url = uri("file://${rootProject.layout.buildDirectory.get().asFile.absolutePath}/local-repository")
                         }
                     }
                     publications.withType<MavenPublication> {
@@ -224,7 +226,7 @@ tasks.register("deletePackages") {
     val rootProjectName = voyagerRoot.name
 
     val mavenAuthor = username
-    val mavenGroup = "com.$mavenAuthor.$rootProjectName.example"
+    val mavenGroup = "com.$mavenAuthor.$rootProjectName.example-local"
 
     apply(plugin = "org.jetbrains.dokka")
     apply(plugin = "maven-publish")
@@ -241,8 +243,6 @@ tasks.register("deletePackages") {
             ?.reader()
             ?.use(::load)
     }
-// For information about signing.* properties,
-// see comments on signing { ... } block below
     val environment: Map<String, String?> = System.getenv()
     val myExtra = mutableMapOf<String, Any>()
     myExtra["githubToken"] = properties["github.token"] as? String

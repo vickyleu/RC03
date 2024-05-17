@@ -1,3 +1,5 @@
+@file:Suppress("UnstableApiUsage")
+
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 
@@ -10,6 +12,27 @@ plugins {
 compose {
     kotlinCompilerPlugin = "org.jetbrains.kotlin:kotlin-compose-compiler-plugin-embeddable:${libs.versions.kotlincompose.compiler.get()}"
 }
+
+//repositories{
+//    rootProject.buildFile.absolutePath.replace(".gradle.kts","").apply {
+//        val murl = "file://$this/local-repository"
+//        maven {
+//            name = "CustomLocal"
+//            url = uri(murl.apply {
+//                println("settingsDirectory: $this")
+//            })
+//        }
+//    }
+//    google {
+//        mavenContent {
+//            includeGroupAndSubgroups("androidx")
+//            includeGroupAndSubgroups("com.android")
+//            includeGroupAndSubgroups("com.google")
+//        }
+//    }
+//    mavenCentral()
+//}
+
 kotlin {
     targets.withType<KotlinNativeTarget> {
         binaries.all {
@@ -50,21 +73,21 @@ kotlin {
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
 
-
-
-            implementation(libs.voyager.navigator)
-            implementation(libs.voyager.screenmodel)
-            implementation(libs.voyager.navigator.bottomsheet)
-            implementation(libs.voyager.navigator.tab)
-            implementation(libs.voyager.transitions)
-
-//            implementation(projects.voyager.voyagerNavigator)
-//            implementation(projects.voyager.voyagerScreenmodel)
-//            implementation(projects.voyager.voyagerBottomSheetNavigator)
-//            implementation(projects.voyager.voyagerTabNavigator)
-//            implementation(projects.voyager.voyagerTransitions)
-
-
+            val localBuild:String by properties
+            val useLocalBuild = localBuild.toBooleanStrict()
+            if(useLocalBuild){
+                implementation(projects.voyager.voyagerNavigator)
+                implementation(projects.voyager.voyagerScreenmodel)
+                implementation(projects.voyager.voyagerBottomSheetNavigator)
+                implementation(projects.voyager.voyagerTabNavigator)
+                implementation(projects.voyager.voyagerTransitions)
+            }else{
+                implementation(libs.voyager.navigator)
+                implementation(libs.voyager.screenmodel)
+                implementation(libs.voyager.navigator.bottomsheet)
+                implementation(libs.voyager.navigator.tab)
+                implementation(libs.voyager.transitions)
+            }
         }
     }
 }

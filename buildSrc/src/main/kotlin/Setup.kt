@@ -129,7 +129,7 @@ fun Project.setupModuleForComposeMultiplatform(
             }
 
             androidTarget {
-                if (plugins.hasPlugin("com.vanniktech.maven.publish")) {
+                if (plugins.hasPlugin("maven-publish")) {
                     publishLibraryVariants("release")
                 }
             }

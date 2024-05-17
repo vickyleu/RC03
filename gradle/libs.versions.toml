@@ -59,11 +59,11 @@ junit-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref 
 junit-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit" }
 
 
-voyager-navigator = { module = "com.vickyleu.voyager.example:navigator", version.ref = "compose-voyager" }
-voyager-screenmodel = { module = "com.vickyleu.voyager.example:screenmodel", version.ref = "compose-voyager" }
-voyager-navigator-tab = { module = "com.vickyleu.voyager.example:tab-navigator", version.ref = "compose-voyager" }
-voyager-transitions = { module = "com.vickyleu.voyager.example:transitions", version.ref = "compose-voyager" }
-voyager-navigator-bottomsheet = { module = "com.vickyleu.voyager.example:bottom-sheet-navigator", version.ref = "compose-voyager" }
+voyager-navigator = { module = "com.vickyleu.voyager.example-local:navigator", version.ref = "compose-voyager" }
+voyager-screenmodel = { module = "com.vickyleu.voyager.example-local:screenmodel", version.ref = "compose-voyager" }
+voyager-navigator-tab = { module = "com.vickyleu.voyager.example-local:tab-navigator", version.ref = "compose-voyager" }
+voyager-transitions = { module = "com.vickyleu.voyager.example-local:transitions", version.ref = "compose-voyager" }
+voyager-navigator-bottomsheet = { module = "com.vickyleu.voyager.example-local:bottom-sheet-navigator", version.ref = "compose-voyager" }
 
 coroutines-jvm = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm",version="1.8.1" }
 

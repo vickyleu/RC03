@@ -19,6 +19,7 @@ import rc03.composeapp.generated.resources.compose_multiplatform
 @Composable
 @Preview
 fun App() {
+//    Navigator
     MaterialTheme {
         var showContent by remember { mutableStateOf(false) }
         Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {

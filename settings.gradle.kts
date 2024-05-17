@@ -18,7 +18,7 @@ pluginManagement {
 }
 
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.PREFER_PROJECT)
+        repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
     repositories {
         google {
             mavenContent {
@@ -28,26 +28,37 @@ dependencyResolutionManagement {
             }
         }
         mavenCentral()
-        val properties = java.util.Properties().apply {
-            runCatching { rootProject.projectDir.resolve("local.properties") }
-                .getOrNull()
-                .takeIf { it?.exists() ?: false }
-                ?.reader()
-                ?.use(::load)
-        }
-        val environment: Map<String, String?> = System.getenv()
-        extra["githubToken"] = properties["github.token"] as? String
-            ?: environment["GITHUB_TOKEN"] ?: ""
-        maven {
-            url = uri("https://maven.pkg.github.com/vickyleu/voyager")
-            credentials {
-                username = "vickyleu"
-                password = extra["githubToken"]?.toString()
-            }
-            content {
-                excludeGroupByRegex("(?!com|cn).github.(?!vickyleu).*")
+
+        rootProject.buildFile.absolutePath.replace(".gradle.kts","").apply {
+            val murl = "file://$this/local-repository"
+            maven {
+                name = "CustomLocal"
+                url = uri(murl.apply {
+                    println("settingsDirectory: $this")
+                })
             }
         }
+
+//        val properties = java.util.Properties().apply {
+//            runCatching { rootProject.projectDir.resolve("local.properties") }
+//                .getOrNull()
+//                .takeIf { it?.exists() ?: false }
+//                ?.reader()
+//                ?.use(::load)
+//        }
+//        val environment: Map<String, String?> = System.getenv()
+//        extra["githubToken"] = properties["github.token"] as? String
+//            ?: environment["GITHUB_TOKEN"] ?: ""
+//        maven {
+//            url = uri("https://maven.pkg.github.com/vickyleu/voyager")
+//            credentials {
+//                username = "vickyleu"
+//                password = extra["githubToken"]?.toString()
+//            }
+//            content {
+//                excludeGroupByRegex("(?!com|cn).github.(?!vickyleu).*")
+//            }
+//        }
     }
 }
 
