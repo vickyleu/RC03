@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="cafe.adriel.voyager.sample">
+
+    <application
+        android:name=".App"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:allowBackup="true"
+        android:supportsRtl="true">
+        <activity
+            android:name=".SampleActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".stateStack.StateStackActivity"/>
+        <activity android:name=".basicNavigation.BasicNavigationActivity"/>
+        <activity android:name=".tabNavigation.TabNavigationActivity"/>
+        <activity android:name=".nestedNavigation.NestedNavigationActivity"/>
+        <activity android:name=".parcelableScreen.ParcelableActivity"/>
+        <activity android:name=".screenModel.ScreenModelActivity"/>
+        <activity android:name=".androidViewModel.AndroidViewModelActivity"/>
+        <activity android:name=".bottomSheetNavigation.BottomSheetNavigationActivity"/>
+        <activity android:name=".rxJavaIntegration.RxJavaIntegrationActivity"/>
+        <activity android:name=".liveDataIntegration.LiveDataIntegrationActivity"/>
+        <activity android:name=".kodeinIntegration.KodeinIntegrationActivity"/>
+        <activity android:name=".koinIntegration.KoinIntegrationActivity"/>
+        <activity android:name=".hiltIntegration.HiltMainActivity"/>
+        <activity android:name=".androidLegacy.LegacyActivity"/>
+    </application>
+
+</manifest>
