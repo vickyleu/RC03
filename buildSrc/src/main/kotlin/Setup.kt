@@ -41,19 +41,15 @@ private fun BaseExtension.setupAndroid() {
 
 fun DependencyHandler.detectProject(rootProject:Project, path:String): ProjectDependency{
     if(rootProject.name != "voyager"){
-        println("voyager:  ${":voyager$path"}")
         return project(":voyager$path")
     }
-    println("voyager:  ${"$path"}")
     return project("$path")
 }
 
 fun KotlinDependencyHandler.detectProject(rootProject:Project,path:String): ProjectDependency{
     if(rootProject.name != "voyager"){
-        println("voyager:  ${":voyager$path"}")
         return project(":voyager$path")
     }
-    println("voyager:  ${"$path"}")
     return project("$path")
 }
 

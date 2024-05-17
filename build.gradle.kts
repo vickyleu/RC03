@@ -15,13 +15,6 @@ import java.util.concurrent.Executors
 
 buildscript {
     dependencies {
-//        classpath(libs.plugin.hilt)
-//        classpath(libs.plugin.ktlint)
-////        classpath(libs.plugin.maven)
-//        classpath(libs.plugin.multiplatform.compose)
-//        classpath(libs.plugin.dokka)
-//        classpath(libs.plugin.compose.compiler)
-//        classpath(libs.plugin.atomicfu)
         val dokkaVersion = libs.versions.dokka.get()
         classpath("org.jetbrains.dokka:dokka-base:$dokkaVersion")
     }
@@ -36,7 +29,7 @@ plugins {
     id(libs.plugins.kotlin.multiplatform.get().pluginId) apply false
 
 
-    alias(libs.plugins.kotlin.atomicfu).apply(false)
+    alias(libs.plugins.kotlin.atomicfu) apply false
     alias(libs.plugins.jetbrains.compose) apply false
     alias(libs.plugins.compose.compiler) apply false
     alias(libs.plugins.dokka)
@@ -81,6 +74,9 @@ allprojects {
         val mVersion = "1.0.0"
         afterEvaluate {
             if (project.name.startsWith(voyagerRoot.name).not()) {
+                return@afterEvaluate
+            }
+            if (project.name==(voyagerRoot.name)) {
                 return@afterEvaluate
             }
             tasks.withType<PublishToMavenRepository> {
@@ -211,7 +207,6 @@ allprojects {
 
 
 tasks.register("deletePackages") {
-
     val libs = rootDir.resolve("gradle/libs.versions.toml")
     val map = hashMapOf<String, String>()
     libs.useLines {

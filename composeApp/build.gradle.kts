@@ -51,16 +51,18 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
 
 
-            /*implementation(libs.voyager.screenmodel)
-            implementation(libs.voyager.navigator)
-            implementation(libs.voyager.navigator.tab)
-            implementation(libs.voyager.transitions)*/
 
-            implementation(projects.voyager.voyagerNavigator)
-            implementation(projects.voyager.voyagerScreenmodel)
-            implementation(projects.voyager.voyagerBottomSheetNavigator)
-            implementation(projects.voyager.voyagerTabNavigator)
-            implementation(projects.voyager.voyagerTransitions)
+            implementation(libs.voyager.navigator)
+            implementation(libs.voyager.screenmodel)
+            implementation(libs.voyager.navigator.bottomsheet)
+            implementation(libs.voyager.navigator.tab)
+            implementation(libs.voyager.transitions)
+
+//            implementation(projects.voyager.voyagerNavigator)
+//            implementation(projects.voyager.voyagerScreenmodel)
+//            implementation(projects.voyager.voyagerBottomSheetNavigator)
+//            implementation(projects.voyager.voyagerTabNavigator)
+//            implementation(projects.voyager.voyagerTransitions)
 
 
         }

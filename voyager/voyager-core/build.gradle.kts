@@ -25,6 +25,9 @@ kotlin {
             compileOnly(compose.runtime)
             compileOnly(compose.runtimeSaveable)
             implementation(libs.kotlinx.coroutines.core)
+            // https://mvnrepository.com/artifact/org.jetbrains.kotlinx/atomicfu
+            implementation("org.jetbrains.kotlinx:atomicfu:0.24.0")
+
         }
         jvmTest.dependencies {
             implementation(libs.junit.api)

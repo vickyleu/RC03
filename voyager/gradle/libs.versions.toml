@@ -1,5 +1,5 @@
 [versions]
-agp = "8.2.2"
+agp = "8.4.0"
 kotlin = "2.0.0-RC3"
 kotlincompose-compiler = "2.0.0-RC3"
 ktlint = "12.1.1"
@@ -77,7 +77,5 @@ dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
-atomicfu = { id = "org.jetbrains.kotlin.plugin.atomicfu", version.ref = "kotlin" }
-
 
 binaryCompatibilityValidator =  { id = "org.jetbrains.kotlinx.binary-compatibility-validator", version.ref = "binaryCompatibilityValidator" }

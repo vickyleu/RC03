@@ -2,10 +2,6 @@
 
 package cafe.adriel.voyager.core.concurrent
 
-import kotlinx.atomicfu.locks.SynchronizedObject
-import kotlinx.atomicfu.locks.synchronized
-///  atomicfu 2.0.0-RC3 is not available for JS ???
-
 import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.internal.SynchronizedObject
 import kotlinx.coroutines.internal.synchronized
@@ -20,6 +16,7 @@ public actual  class ThreadSafeList<T>(
     actual override  val size: Int
         get() = delegate.size
 
+    @OptIn(InternalCoroutinesApi::class)
     actual override  fun contains(element: T): Boolean {
         return synchronized(syncObject) { delegate.contains(element) }
     }

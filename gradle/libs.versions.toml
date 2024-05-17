@@ -1,5 +1,5 @@
 [versions]
-agp = "8.2.2"
+agp = "8.4.0"
 android-compileSdk = "34"
 android-minSdk = "24"
 android-targetSdk = "34"
@@ -18,8 +18,8 @@ kotlin = "2.0.0-RC3"
 kotlincompose-compiler = "2.0.0-RC3"
 #kotlin = "2.0.0-RC3"
 dokka="1.9.20"
-compose-voyager = "1.0.2"
-jvmTarget="11"
+compose-voyager = "1.0.0"
+jvmTarget="17"
 #######
 javapoet = "1.13.0"
 hilt = "2.51.1"
@@ -59,11 +59,11 @@ junit-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref 
 junit-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit" }
 
 
-voyager-navigator = { module = "com.vickyleu.voyager:navigator", version.ref = "compose-voyager" }
-voyager-screenmodel = { module = "com.vickyleu.voyager:screenmodel", version.ref = "compose-voyager" }
-voyager-navigator-tab = { module = "com.vickyleu.voyager:tab-navigator", version.ref = "compose-voyager" }
-voyager-transitions = { module = "com.vickyleu.voyager:transitions", version.ref = "compose-voyager" }
-voyager-navigator-bottomsheet = { module = "com.vickyleu.voyager:bottom-sheet-navigator", version.ref = "compose-voyager" }
+voyager-navigator = { module = "com.vickyleu.voyager.example:navigator", version.ref = "compose-voyager" }
+voyager-screenmodel = { module = "com.vickyleu.voyager.example:screenmodel", version.ref = "compose-voyager" }
+voyager-navigator-tab = { module = "com.vickyleu.voyager.example:tab-navigator", version.ref = "compose-voyager" }
+voyager-transitions = { module = "com.vickyleu.voyager.example:transitions", version.ref = "compose-voyager" }
+voyager-navigator-bottomsheet = { module = "com.vickyleu.voyager.example:bottom-sheet-navigator", version.ref = "compose-voyager" }
 
 coroutines-jvm = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm",version="1.8.1" }
 
@@ -74,7 +74,6 @@ kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
-
 kotlin-atomicfu = { id = "org.jetbrains.kotlin.plugin.atomicfu", version.ref = "kotlin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlincompose-compiler" }
 android-application = { id = "com.android.application", version.ref = "agp" }

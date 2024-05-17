@@ -16,6 +16,7 @@ public actual class ThreadSafeSet<T>(
     actual override val size: Int
         get() = delegate.size
 
+    @InternalCoroutinesApi
     actual override fun contains(element: T): Boolean {
         return synchronized(syncObject) { delegate.contains(element) }
     }
